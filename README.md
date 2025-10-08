@@ -394,7 +394,62 @@
   .price { font-size: 1.25rem; }
 }
 
-	
+	/* Hide hamburger on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: gold;
+}
+
+/* Desktop navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: black;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: gold;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ===== MOBILE ===== */
+@media screen and (max-width: 767px) {
+  .nav-links {
+    display: none;       /* Hide links initially */
+    flex-direction: column;
+    background-color: black;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;     /* Show hamburger on mobile */
+  }
+
+  .nav-links.active {
+    display: flex;      /* Show menu when clicked */
+  }
+}
+
 	
   </style>
 </head>
@@ -417,7 +472,9 @@
     <li><a href="#about" class="nav-link" style="color: white; text-decoration: none;">About</a></li>
     <li><a href="#contact" class="nav-link" style="color: white; text-decoration: none;">Contact</a></li>
   </ul>
-
+	<div class="menu-toggle">
+    &#9776; <!-- Hamburger icon -->
+  </div>
   <!-- Theme Switcher -->
   <button id="themeSwitch" style="margin-left: 20px;">Switch Theme</button>
 </nav>
@@ -1346,6 +1403,16 @@ function openFlappy(){
   }
   animate();
 })();
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+</script>
+
 
 </script>
 
