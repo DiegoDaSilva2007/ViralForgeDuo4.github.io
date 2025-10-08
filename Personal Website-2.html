@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ViralForge Duo — Social Media & Web</title>
+  <meta name="description" content="ViralForge Duo — We craft viral campaigns and build stunning websites. Book a call and let’s make your brand unforgettable." />
+  <!-- Google Fonts -->
+  <link href="C:\Users\Admin\Desktop" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f0f0f;
+      --card:#131313;
+      --accent1:#ff6ec4;
+      --accent2:#7873f5;
+      --white:#ffffff;
+      --muted:#dcdcdc;
+      --gradient: linear-gradient(90deg,var(--accent1),var(--accent2));
+
+      /* Added variables for dynamic card hover */
+      --card-hover-bg: rgba(241,196,15,0.15); /* default gold */
+      --card-hover-border: rgba(241,196,15,0.3); /* default gold */
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg) url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      -webkit-text-size-adjust:100%;
+      line-height:1.5;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3{font-family:"Noto Serif", "Times New Roman", serif; color:var(--accent1); margin-bottom:0.6rem}
+
+    nav{
+      position:sticky; top:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem; padding:1rem 2rem;
+      background: rgba(15,15,15,0.85);
+      border-bottom:2px solid rgba(255,110,196,0.08);
+      backdrop-filter: blur(6px);
+    }
+    .logo{
+      display:flex; align-items:center; gap:12px; font-weight:700; color:var(--accent1);
+    }
+    .logo img{height:44px;width:44px;object-fit:cover;border-radius:8px; box-shadow: 0 6px 20px rgba(255,110,196,0.06)}
+    nav ul{display:flex;gap:1.4rem;list-style:none;align-items:center}
+    nav a{font-weight:600;opacity:0.95; padding:6px 0; transition:color .18s, opacity .18s}
+    nav a:hover, nav a.active{color:var(--accent2); text-decoration:none}
+
+    .hero{
+      min-height:88vh;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:2.2rem;
+      position:relative;
+    }
+    .hero .hero-logo{width:140px; height:auto; border-radius:12px; margin-bottom:1rem; box-shadow: 0 12px 40px rgba(255,110,196,0.07)}
+    .hero h1{font-size: clamp(1.8rem, 3.8vw, 3.2rem)}
+    .hero p{color:var(--muted); max-width:760px; margin-top:.6rem; font-size:1.05rem}
+    .hero .cta-row{margin-top:1.8rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap}
+
+    .btn{
+      display:inline-block; padding:0.8rem 1.6rem; border-radius:10px; font-weight:700; cursor:pointer;
+      border:none; background:transparent; color:#0b0b0b;
+      background-image: var(--gradient); background-size:200% 200%;
+      transition: transform .18s ease, box-shadow .18s ease, background-position .4s;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn:hover{
+      background-position:100% 0;
+      box-shadow: 0 10px 30px rgba(255,110,196,0.3), 0 2px 6px rgba(0,0,0,0.6);
+      outline: none;
+    }
+    .btn.ghost{
+      background:transparent; color:var(--accent1); border:1px solid rgba(255,110,196,0.12);
+      box-shadow:none;
+    }
+    .btn.ghost:hover{ box-shadow: 0 8px 28px rgba(255,110,196,0.06); color:var(--accent2) }
+
+    section{padding:4.2rem 1.6rem; max-width:1200px; margin:0 auto}
+    .container{max-width:1200px;margin:0 auto}
+    .section-title{ text-align:center; margin-bottom:2rem}
+    .section-title p{color:var(--muted); margin-top:.6rem}
+
+    .grid{display:grid; gap:1.6rem}
+    .grid.columns-3{grid-template-columns:repeat(3,1fr)}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      border:1px solid rgba(255,110,196,0.04);
+      padding:1.6rem; border-radius:12px; text-align:left;
+      transition:0.3s;
+      position: relative;
+      z-index:1;
+    }
+
+    /* --- CORRECTED HOVER EFFECT USING THEME VARIABLES --- */
+    .grid:hover .card:not(:hover){
+      filter: blur(2px);
+      transition: filter 0.3s;
+    }
+
+    .card:hover{
+      filter: blur(0); 
+      background: var(--card-hover-bg); /* dynamic hover background */
+      border-color: var(--card-hover-border); /* dynamic hover border */
+      transform: scale(1.08) translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      z-index: 10;
+    }
+
+    .card h3{margin-bottom:0.25rem}
+    .card p{color:var(--muted); margin-bottom:0.8rem}
+    .price{font-size:1.45rem; font-weight:800; color:var(--accent2); margin-bottom:0.6rem}
+    .features{list-style:none;padding-left:0; color:var(--muted); margin-bottom:1rem}
+    .features li{margin:0.45rem 0; font-size:.96rem}
+
+    .skills{
+      display:flex; flex-direction:column; gap:25px; max-width:600px; margin:2rem auto;
+    }
+    .skill-bar{
+      background:#222;
+      border-radius:50px;
+      overflow:hidden;
+      height:25px;
+    }
+    .skill-progress{
+      height:100%;
+      width:0%;
+      background: var(--gradient);
+      border-radius:50px;
+      transition: width 2s;
+    }
+
+   .dropdown { margin-bottom: 1rem; }
+    .dropdown-btn {
+      width: 100%;
+      background: var(--card);
+      color: var(--white);
+      padding: 0.8rem 1rem;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .dropdown-btn:hover { background: rgba(255,255,255,0.05); }
+    .dropdown-content {
+      display: none;
+      flex-direction: column;
+      margin-top: 0.5rem;
+      gap: 0.5rem;
+    }
+    .dropdown-content a {
+      padding: 0.5rem 1rem;
+      background: var(--card);
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-content a:hover { background: var(--accent1); color: var(--white); }
+    .dropdown.active .dropdown-content { display: flex; }
+
+    .contact-form{max-width:640px;margin:0 auto}
+    .contact-form input,.contact-form textarea{
+      width:100%; padding:0.9rem; border-radius:8px; border:1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.02); color:var(--white); resize:vertical;
+    }
+    .small{font-size:.9rem;color:var(--muted)}
+
+    footer{padding:2rem;text-align:center;border-top:1px solid rgba(255,110,196,0.05); color:var(--muted)}
+
+    #robotAssistant{
+      position:fixed;
+      bottom:2rem;
+      right:2rem;
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      background:var(--gradient);
+      box-shadow:0 12px 30px rgba(0,0,0,0.5);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;
+      z-index:10000;
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    #robotAssistant:hover{
+      transform:scale(1.1);
+      box-shadow:0 16px 40px rgba(255,110,196,0.5);
+    }
+    #robotTooltip{
+      position:fixed;
+      bottom:7.5rem;
+      right:2rem;
+      max-width:220px;
+      padding:0.7rem 1rem;
+      border-radius:10px;
+      background: rgba(20,20,20,0.95);
+      color:#fff;
+      font-size:0.9rem;
+      box-shadow:0 8px 25px rgba(0,0,0,0.5);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity 0.3s;
+      z-index:10001;
+    }
+
+    #themeSwitch{
+      position:fixed;
+      top:1rem;
+      right:1rem;
+      padding:0.6rem 1rem;
+      border:none;
+      border-radius:8px;
+      background:var(--accent1);
+      color:#fff;
+      cursor:pointer;
+      z-index:10002;
+      font-weight:700;
+      box-shadow:0 6px 16px rgba(0,0,0,0.4);
+      transition: transform 0.2s, background 0.2s;
+    }
+    #themeSwitch:hover{transform:scale(1.05)}
+
+    @media (max-width:980px){
+      .grid.columns-3{grid-template-columns:repeat(2,1fr)}
+      nav ul{display:none}
+    }
+    @media (max-width:640px){
+      .grid.columns-3{grid-template-columns:1fr}
+      .hero p{font-size:.98rem}
+      nav{padding:0.8rem 1rem}
+      .hero .hero-logo{width:120px}
+    }
+	
+	/* --- Minigames Dropdown & Mobile Fix --- */
+.portfolio-dropdowns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.dropdown { flex: 1 1 200px; }
+.dropdown.active .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dropdown-content a {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* --- Rock-Paper-Scissors Styles --- */
+.rpsBtn {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+.rpsBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255,255,255,0.35);
+  border-color: var(--accent2);
+}
+#minigameContent h2 {
+  text-align: center;
+  margin-bottom: 0.8rem;
+  color: var(--accent2);
+}
+#minigameContent p { text-align: center; }
+
+/* --- Modal Styling --- */
+#minigameModal {
+  display:none;
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  background:linear-gradient(135deg,#1f1f1f,#111);
+  z-index:100000;
+  justify-content:center;
+  align-items:center;
+  overflow:auto;
+  padding:20px;
+}
+#minigameContent {
+  position:relative;
+  background:#111;
+  padding:25px;
+  border-radius:15px;
+  max-width:400px;
+  width:90%;
+  color:#fff;
+  box-shadow:0 0 40px rgba(255,110,196,0.4);
+}
+#closeMinigame {
+  position:absolute; top:10px; right:10px;
+  background:red; border:none; border-radius:5px;
+  color:#fff; padding:5px 10px; cursor:pointer;
+}
+
+	
+	
+  </style>
+</head>
+<body>
+<!-- NAVIGATION BAR -->
+<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; background-color: black; padding: 10px 40px;">
+  <!-- Logo Section -->
+  <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+    <img src="logo.png" alt="Logo" style="height: 45px;" />
+    <div style="color: white; font-weight: bold; font-size: 18px;">ViralForge Duo</div>
+  </div>
+
+  <!-- Navigation Links -->
+  <ul style="display: flex; justify-content: center; list-style: none; margin: 0; padding: 0; gap: 25px; flex: 1; margin-right: 60px;">
+    <li><a href="#home" class="nav-link active" style="color: white; text-decoration: none;">Home</a></li>
+    <li><a href="#services" class="nav-link" style="color: white; text-decoration: none;">Services</a></li>
+    <li><a href="#pricing" class="nav-link" style="color: white; text-decoration: none;">Pricing</a></li>
+    <li><a href="#portfolio" class="nav-link" style="color: white; text-decoration: none;">Portfolio</a></li>
+    <li><a href="#about" class="nav-link" style="color: white; text-decoration: none;">About</a></li>
+    <li><a href="#contact" class="nav-link" style="color: white; text-decoration: none;">Contact</a></li>
+  </ul>
+
+  <!-- Theme Switcher -->
+  <button id="themeSwitch" style="margin-left: 20px;">Switch Theme</button>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="hero">
+  <img src="logo.png" alt="ViralForge large logo with slogan" class="hero-logo">
+  <h1>We Forge Digital Greatness — crafted for creators, built for connection.</h1>
+  <p>We combine creative storytelling, performance marketing and pixel-perfect design to help brands get noticed, booked and remembered. If you want consistent leads, scalable campaigns and websites that convert — you’re in the right place.</p>
+
+  <div class="cta-row">
+    <button class="btn" onclick="location.href='#contact'">Book a Call</button>
+    <a class="btn ghost" href="#portfolio">View Work</a>
+  </div>
+</header>
+
+  <!-- SERVICES -->
+  <section id="services" class="container">
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>From single-project launches to full-service campaigns — we help brands reach real people and real results.</p>
+    </div>
+
+    <div class="grid columns-3" style="margin-top:1rem">
+      <div class="card">
+        <h3>Social Media Ads</h3>
+        <p>Create targeted paid campaigns for Facebook, Instagram & TikTok that scale at profit.</p>
+        <ul class="features">
+          <li>A/B ad creative & copy</li>
+          <li>Audience research & targeting</li>
+          <li>Weekly performance reports</li>
+        </ul>
+        <div class="small">Ideal if you want consistent leads & sales from social platforms.</div>
+      </div>
+
+      <div class="card">
+        <h3>Website Creation</h3>
+        <p>Fast, responsive sites built for conversions — landing pages, portfolios, and full sites.</p>
+        <ul class="features">
+          <li>SEO-friendly structure</li>
+          <li>Mobile-first responsive design</li>
+          <li>CMS or static builds (your choice)</li>
+        </ul>
+        <div class="small">Perfect for brands that need a professional online presence fast.</div>
+      </div>
+
+      <div class="card">
+        <h3>Website Maintenance & Support</h3>
+        <p>Keep your site secure, updated and fast — we handle updates so you don’t have to.</p>
+        <ul class="features">
+          <li>Security & uptime checks</li>
+          <li>Speed optimisation</li>
+          <li>Content updates & backups</li>
+        </ul>
+        <div class="small">A great add-on for clients who want ongoing peace of mind.</div>
+      </div>
+    </div>
+</br>
+ <h2 align="center">Our Skills</h2>
+
+    <!-- Skills Section -->
+    <div class="skills">
+      <div>
+        <p>HTML / CSS / JS</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%;"></div>
+        </div>
+      </div>
+      <div>
+        <p>Responsive Design</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%;"></div>
+        </div>
+      </div>
+      <div>
+        <p>Web Animations</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div>
+        <p>Editing Skills</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 98%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="container" style="padding-top:2rem">
+    <div class="section-title">
+      <h2>Pricing & Packages</h2>
+      <p>Simple, transparent pricing so you can pick the package that fits your goals.</p>
+    </div>
+
+    <div class="grid columns-3" style="margin-top:1rem">
+      <!-- Starter -->
+      <div class="card">
+        <h3>Starter</h3>
+        <p class="price">R5,000</p>
+        <p>Launch a clean, high-converting presence for your business.</p>
+        <ul class="features">
+          <li>Single-page or 3-page website</li>
+          <li>Basic on-page SEO</li>
+          <li>Social profile setup (1 platform)</li>
+          <li>1 round of revisions</li>
+        </ul>
+        <button class="btn" onclick="book('Starter',5000)">Choose Starter</button>
+      </div>
+
+      <!-- Growth -->
+      <div class="card">
+        <h3>Growth</h3>
+        <p class="price">R10,000</p>
+        <p>For brands ready to scale — website + social campaigns that start converting.</p>
+        <ul class="features">
+          <li>5–8 page responsive website</li>
+          <li>Ad campaign setup (1 platform)</li>
+          <li>Monthly performance report (1 month)</li>
+          <li>2 rounds of revisions</li>
+        </ul>
+        <button class="btn" onclick="book('Growth',10000)">Choose Growth</button>
+      </div>
+
+      <!-- Premium -->
+      <div class="card">
+        <h3>Premium</h3>
+        <p class="price">R15,000</p>
+        <p>Full-service marketing & design for brands who want sustained growth.</p>
+        <ul class="features">
+          <li>Custom website + SEO groundwork</li>
+          <li>Multi-platform ad campaigns</li>
+          <li>Monthly optimisation & reporting (3 months)</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn" onclick="book('Premium',15000)">Choose Premium</button>
+      </div>
+    </div>
+  </section>
+
+ <!-- Portfolio -->
+<section id="portfolio" class="container">
+  <div class="section-title">
+    <h2>Portfolio</h2>
+    <p>TO BE CONTINUED!</p>
+  </div>
+
+  <!-- Sub-headings with dropdowns -->
+  <div class="portfolio-dropdowns" style="margin-top:1rem;">
+    <div class="dropdown">
+      <button class="dropdown-btn">Minigames ▼</button>
+      <div class="dropdown-content">
+        <a href="#">Rock, Paper, Scissors</a>
+        <a href="#">Flappy Bird</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-btn">3D Models ▼</button>
+      <div class="dropdown-content">
+        <a href="#">Add 3D Model 1</a>
+        <a href="#">Add 3D Model 2</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-btn">Buttons ▼</button>
+      <div class="dropdown-content">
+        <a href="#">Button Example 1</a>
+        <a href="#">Button Example 2</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ABOUT -->
+  <section id="about" class="container">
+    <div class="section-title">
+      <h2>About ViralForge Duo</h2>
+      <p>We’re Rikus & team — a tight-knit creative studio focused on growth, aesthetics and measurable impact.</p>
+    </div>
+
+    <p style="color:var(--muted);max-width:900px;margin:0 auto;text-align:center">
+      We turn ideas into attention: strategy-first thinking, eye-catching creative and marketing that turns viewers into customers. Our approach is tailored, transparent and focused on your business goals — not vanity metrics.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+<section id="contact" class="container">
+  <div class="section-title">
+    <h2>Contact & Bookings</h2>
+    <p>Ready to start? Book a call, send a message, or hit us on WhatsApp for a quick quote.</p>
+  </div>
+
+  <div class="contact-form" style="margin-top:1rem">
+    <form id="contactForm" action="mailto:ViralForgeDuo@gmail.com" method="post" enctype="text/plain">
+      <input id="name" name="name" type="text" placeholder="Your name" required>
+      <input id="email" name="email" type="email" placeholder="Email address" required>
+      <textarea id="message" name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+
+      <div style="display:flex;gap:10px;margin-top:.6rem;flex-wrap:wrap">
+        <button class="btn" type="submit">Send Message</button>
+        <a class="btn ghost" href="https://wa.me/2764693467" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+
+      <div id="formMessage" class="small" style="margin-top:.6rem"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div>&copy; <span id="year"></span> ViralForge Duo — All rights reserved.</div>
+</footer>
+
+<!-- Robot Assistant -->
+<div id="robotAssistant">🤖</div>
+<div id="robotTooltip">Hi, I'm your digital assistant!</div>
+
+<script>
+  // set copyright year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Smooth scroll & active nav highlight
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
+      navLinks.forEach(l=>l.classList.remove('active')); link.classList.add('active');
+    });
+  });
+
+  // Minimal active link on scroll
+  window.addEventListener('scroll', () => {
+    const curPos = window.scrollY + 150;
+    document.querySelectorAll('section').forEach(section => {
+      if(curPos >= section.offsetTop && curPos < section.offsetTop + section.offsetHeight){
+        navLinks.forEach(l=>l.classList.remove('active'));
+        const a = document.querySelector('a[href="#'+section.id+'"]');
+        if(a) a.classList.add('active');
+      }
+    });
+    updateRobotTooltip();
+  });
+
+  // package booking helper
+  function book(pkg, price){
+    const msg = `Hi — I'm interested in the ${pkg} package (${price}). Please contact me to discuss next steps.`;
+    document.getElementById('message').value = msg;
+    location.href = '#contact';
+    document.getElementById('name').focus();
+  }
+
+  // Skills animation
+  const skillBars = document.querySelectorAll('.skill-progress');
+  window.addEventListener('load', () => {
+    skillBars.forEach(bar => {
+      const width = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(() => { bar.style.width = width; }, 100);
+    });
+  });
+
+  // Robot Tooltip
+  const robot = document.getElementById('robotAssistant');
+  const tooltip = document.getElementById('robotTooltip');
+
+  robot.addEventListener('mouseenter', () => tooltip.style.opacity = 1);
+  robot.addEventListener('mouseleave', () => tooltip.style.opacity = 0);
+
+  const sections = [
+    {id:'home', text:'Welcome! I’m your digital assistant.'},
+    {id:'services', text:'Here are all our services: Social Media, Website Creation, and Maintenance.'},
+    {id:'pricing', text:'These are our pricing packages and estimated project ranges.'},
+    {id:'portfolio', text:'Check out our portfolio of recent projects!'},
+    {id:'about', text:'Learn about ViralForge Duo and our approach.'},
+    {id:'contact', text:'Contact us for inquiries or bookings!'}
+  ];
+
+  function updateRobotTooltip(){
+    const scrollPos = window.scrollY + window.innerHeight/2;
+    let currentText = 'Hi, I’m your digital assistant!';
+    sections.forEach(section => {
+      const el = document.getElementById(section.id);
+      if(el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight){
+        currentText = section.text;
+      }
+    });
+    tooltip.textContent = currentText;
+  }
+
+   // Toggle dropdowns
+    document.querySelectorAll('.dropdown-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+
+
+
+  // Theme Switcher
+  const themeSwitchBtn = document.getElementById('themeSwitch');
+  let goldTheme = true;
+  document.documentElement.style.setProperty('--accent1', '#f1c40f'); // gold
+  document.documentElement.style.setProperty('--accent2', '#f39c12');
+  document.documentElement.style.setProperty('--card-hover-bg', 'rgba(241,196,15,0.15)');
+  document.documentElement.style.setProperty('--card-hover-border', 'rgba(241,196,15,0.3)');
+  themeSwitchBtn.style.background = '#f1c40f';
+
+  themeSwitchBtn.addEventListener('click', () => {
+    if(goldTheme){
+      document.documentElement.style.setProperty('--accent1', '#9b59b6'); // purple
+      document.documentElement.style.setProperty('--accent2', '#8e44ad');
+      document.documentElement.style.setProperty('--card-hover-bg', 'rgba(155,89,182,0.15)'); // purple hover
+      document.documentElement.style.setProperty('--card-hover-border', 'rgba(155,89,182,0.3)');
+      themeSwitchBtn.style.background = '#9b59b6';
+      goldTheme = false;
+    } else {
+      document.documentElement.style.setProperty('--accent1', '#f1c40f'); // gold
+      document.documentElement.style.setProperty('--accent2', '#f39c12');
+      document.documentElement.style.setProperty('--card-hover-bg', 'rgba(241,196,15,0.15)');
+      document.documentElement.style.setProperty('--card-hover-border', 'rgba(241,196,15,0.3)');
+      themeSwitchBtn.style.background = '#f1c40f';
+      goldTheme = true;
+    }
+  });
+  
+  
+  
+  
+</script>
+<!-- Minigames Modal -->
+<div id="minigameModal">
+  <div id="minigameContent">
+    <button id="closeMinigame">X</button>
+    <div id="minigameInner"></div>
+  </div>
+</div>
+
+<script>
+const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+const modal = document.getElementById('minigameModal');
+const modalInner = document.getElementById('minigameInner');
+const closeBtn = document.getElementById('closeMinigame');
+
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+  modalInner.innerHTML = '';
+});
+
+dropdownLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const text = link.textContent.trim();
+    if(text === "Rock, Paper, Scissors"){
+      openRPS();
+    } else if(text === "Flappy Bird"){
+      openFlappy();
+    }
+  });
+});
+
+/* --- ROCK PAPER SCISSORS --- */
+function openRPS(){
+  modal.style.display = 'flex';
+  modalInner.innerHTML = `
+    <h2 style="text-align:center; margin-bottom:10px;">Rock Paper Scissors</h2>
+    <p style="text-align:center;">Choose your move:</p>
+    <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin:20px 0;">
+      <img src="Rock.png" alt="Rock" class="rpsBtn" style="width:120px; max-width:30vw; cursor:pointer;">
+      <img src="Paper.jpg" alt="Paper" class="rpsBtn" style="width:120px; max-width:30vw; cursor:pointer;">
+      <img src="Scissors.jpg" alt="Scissors" class="rpsBtn" style="width:120px; max-width:30vw; cursor:pointer;">
+    </div>
+    <p id="rpsResult" style="margin-top:15px; font-weight:bold; text-align:center;"></p>
+    <p style="margin-top:10px; text-align:center;">Score — You: <span id="rpsUser">0</span> | Bot: <span id="rpsBot">0</span></p>
+  `;
+
+
+  let userScore = 0, botScore = 0;
+  const buttons = modalInner.querySelectorAll('.rpsBtn');
+  const resultP = document.getElementById('rpsResult');
+  const userSpan = document.getElementById('rpsUser');
+  const botSpan = document.getElementById('rpsBot');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const userChoice = btn.alt;
+      const choices = ["Rock","Paper","Scissors"];
+      const botChoice = choices[Math.floor(Math.random()*3)];
+      let outcome = '';
+
+      if(userChoice === botChoice){
+        outcome = "Draw!";
+      } else if(
+        (userChoice === "Rock" && botChoice === "Scissors") ||
+        (userChoice === "Paper" && botChoice === "Rock") ||
+        (userChoice === "Scissors" && botChoice === "Paper")
+      ){
+        outcome = "You win!";
+        userScore++;
+      } else {
+        outcome = "Bot wins!";
+        botScore++;
+      }
+
+      resultP.textContent = `You chose ${userChoice}, Bot chose ${botChoice}. ${outcome}`;
+      userSpan.textContent = userScore;
+      botSpan.textContent = botScore;
+    });
+  });
+}
+
+/* --- FLAPPY BIRD MINI --- */
+function openFlappy(){
+  modal.style.display = 'flex';
+  modalInner.innerHTML = `
+    <h2>Flappy Bird Mini</h2>
+    <canvas id="flappyCanvas" width="350" height="500" style="background:#222; display:block; margin:auto; border-radius:12px;"></canvas>
+    <p style="text-align:center;">Score: <span id="flappyScore">0</span></p>
+    <p style="text-align:center; font-size:0.8rem; margin-top:5px;">Press <strong>SPACE</strong> or tap to jump!</p>
+  `;
+
+  const canvas = document.getElementById('flappyCanvas');
+  const ctx = canvas.getContext('2d');
+  let bird = {x:50, y:250, w:20, h:20, dy:0};
+  let gravity = 0.6, jump = -10, pipes = [], frame = 0, score = 0;
+
+  function resetGame(){ bird.y=250; bird.dy=0; pipes=[]; frame=0; score=0; document.getElementById('flappyScore').textContent=score; }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = '#ff6ec4'; ctx.fillRect(bird.x,bird.y,bird.w,bird.h);
+    pipes.forEach(p => { ctx.fillStyle='#7873f5'; ctx.fillRect(p.x,0,p.width,p.top); ctx.fillRect(p.x,canvas.height-p.bottom,p.width,p.bottom); });
+    bird.dy+=gravity; bird.y+=bird.dy;
+    pipes.forEach(p=>{
+      if(bird.x+bird.w>p.x && bird.x<p.x+p.width && (bird.y<p.top || bird.y+bird.h>canvas.height-p.bottom)){ resetGame(); }
+      if(!p.passed && p.x+p.width<bird.x){ score++; document.getElementById('flappyScore').textContent=score; p.passed=true; }
+      p.x-=2;
+    });
+    if(frame%150===0){ let top=Math.random()*200+50; let bottom=400-top-100; pipes.push({x:canvas.width,top:top,bottom:bottom,width:40,passed:false}); }
+    if(bird.y+bird.h>canvas.height || bird.y<0){ resetGame(); }
+    frame++; requestAnimationFrame(draw);
+  }
+
+  draw();
+  document.addEventListener('keydown', e=>{ if(e.code==='Space') bird.dy=jump; });
+  canvas.addEventListener('click', ()=>{ bird.dy=jump; });
+}
+</script>
+
+
+</body>
+</html>
