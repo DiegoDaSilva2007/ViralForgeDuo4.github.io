@@ -344,6 +344,55 @@
   display: block;
 }
 
+/* === Responsive Media Queries === */
+
+/* Large devices (laptops/desktops) */
+@media screen and (min-width: 1200px) {
+  .container { width: 95%; padding: 30px; }
+  .grid.columns-3 { grid-template-columns: repeat(3, 1fr); }
+  .hero h1 { font-size: 4rem; }
+  .hero p { font-size: 1.5rem; }
+}
+
+/* Medium devices (tablets, 768px – 1199px) */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .container { width: 95%; padding: 25px; }
+  .grid.columns-3 { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .hero h1 { font-size: 3rem; }
+  .hero p { font-size: 1.25rem; }
+  .cta-row { flex-direction: column; gap: 0.8rem; }
+  nav ul { gap: 1rem; }
+  .skill-bar { height: 20px; }
+}
+
+/* Small devices (phones, 480px – 767px) */
+@media screen and (max-width: 767px) {
+  .container { width: 90%; padding: 20px; }
+  .grid.columns-3 { grid-template-columns: 1fr; gap: 1rem; }
+  .hero h1 { font-size: 2.2rem; line-height: 2.6rem; }
+  .hero p { font-size: 1rem; line-height: 1.5rem; }
+  .cta-row { flex-direction: column; gap: 0.8rem; width: 100%; }
+  .btn { width: 100%; padding: 12px 0; }
+  nav ul { flex-direction: column; gap: 0.6rem; margin-right: 0; }
+  .skills { max-width: 100%; gap: 18px; }
+  .skill-bar { height: 18px; }
+  #robotAssistant { width: 70px; height: 70px; bottom: 1rem; right: 1rem; }
+  #robotTooltip { bottom: 6rem; right: 1rem; max-width: 180px; font-size: 0.8rem; }
+}
+
+/* Extra small devices (portrait phones, max 480px) */
+@media screen and (max-width: 480px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 0.95rem; }
+  nav ul { gap: 0.5rem; font-size: 0.9rem; }
+  .cta-row { gap: 0.6rem; }
+  .btn { font-size: 0.9rem; padding: 10px 0; }
+  .skills { gap: 14px; }
+  .skill-bar { height: 16px; }
+  .section-title h2 { font-size: 1.6rem; }
+  .card { padding: 1rem; }
+  .price { font-size: 1.25rem; }
+}
 
 	
 	
@@ -573,7 +622,7 @@
 
       <div style="display:flex;gap:10px;margin-top:.6rem;flex-wrap:wrap">
         <button class="btn" type="submit">Send Message</button>
-        <a class="btn ghost" href="https://wa.me/0660542468" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn ghost" href="https://wa.me/27660542468" target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
 
       <div id="formMessage" class="small" style="margin-top:.6rem"></div>
